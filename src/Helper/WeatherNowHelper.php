@@ -19,10 +19,6 @@ class WeatherNowHelper
             $weatherData['sys']['country'],
             $weatherData['weather'][0]['description'],
             $weatherData['main']['temp'],
-            $weatherData['main']['temp_min'],
-            $weatherData['main']['temp_max'],
-            $weatherData['main']['humidity'],
-            $weatherData['main']['pressure'],
             $weatherData['wind']['speed'],
             $weatherData['weather'][0]['icon'],
         ));

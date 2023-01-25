@@ -20,10 +20,6 @@ class WetherNow
         String $country,
         string $weather,
         int $temperature,
-        int $minTemp,
-        int $maxTemp,
-        int $humidity,
-        int $pressure,
         float $windSpeed,
         string $icon
     )
@@ -32,10 +28,6 @@ class WetherNow
         $this->country = $country;
         $this->weather = $weather;
         $this->temperature = $temperature;
-        $this->minTemp = $minTemp;
-        $this->maxTemp = $maxTemp;
-        $this->humidity = $humidity;
-        $this->pressure = $pressure;
         $this->windSpeed = $windSpeed;
         $this->icon = $icon;
     }
@@ -59,27 +51,6 @@ class WetherNow
     {
         return $this->temperature;
     }
-
-    public function getMinTemp(): int
-    {
-        return $this->minTemp;
-    }
-
-    public function getMaxTemp(): int
-    {
-        return $this->maxTemp;
-    }
-
-    public function getHumidity(): int
-    {
-        return $this->humidity;
-    }
-
-    public function getPressure(): int
-    {
-        return $this->pressure;
-    }
-
     public function getWindSpeed(): float
     {
         return $this->windSpeed;

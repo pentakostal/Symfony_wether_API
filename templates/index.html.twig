@@ -15,16 +15,9 @@
                     <span class="text-6xl font-bold">{{ forecast.getTemperature }}°C</span>
                     <span class="font-semibold mt-1 text-gray-600">{{ forecast.getWeather }}</span>
                     <span class="font-semibold mt-1 text-gray-500">{{ forecast.getCity }}, {{ forecast.getCountry }}</span>
+                    <span class="font-semibold mt-1 text-blue-300">Wind speed: {{ forecast.getWindSpeed }}</span>
                 </div>
                 <div class="weather-icon"><img src="{{"https://openweathermap.org/img/wn/" ~ forecast.getIcon ~ ".png"}}" /></div>
-            </div>
-
-            <div class="justify-left">
-                <br><span class="font-semibold text-lg w-1/4 text-right">Min temperature: {{ forecast.getMinTemp }}°C</span>
-                <br><span class="font-semibold text-lg w-1/4 text-right">Max temperature: {{ forecast.getMaxTemp }}°C</span>
-                <br><span class="font-semibold text-lg w-1/4 text-right">Humidity: {{ forecast.getHumidity }}%</span>
-                <br><span class="font-semibold text-lg w-1/4 text-right">Pressure: {{ forecast.getPressure }}</span>
-                <br><span class="font-semibold text-lg w-1/4 text-right">Wind speed: {{ forecast.getWindSpeed }}</span>
             </div>
         </div>
         <div class="flex flex-col space-y-6 w-full max-w-screen-sm bg-white p-10 mt-10 rounded-xl ring-8 ring-white ring-opacity-40">
