@@ -7,7 +7,7 @@ use App\Entity\WetherNow;
 class WeatherNowHelper
 {
     //get weather now from api
-    public function getWeatherNow($cityName): WetherNow
+    public function getWeatherNow(string $cityName): WetherNow
     {
         $apiKey = $_ENV['API_KEY'];
         $apiUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' . $cityName . '&appid=' . $apiKey . '&units=metric';

@@ -15,7 +15,7 @@
                     <span class="text-6xl font-bold">{{ forecast.getTemperature }}°C</span>
                     <span class="font-semibold mt-1 text-gray-600">{{ forecast.getWeather }}</span>
                     <span class="font-semibold mt-1 text-gray-500">{{ forecast.getCity }}, {{ forecast.getCountry }}</span>
-                    <span class="font-semibold mt-1 text-blue-300">Wind speed: {{ forecast.getWindSpeed }}</span>
+                    <span class="font-semibold mt-1 text-blue-300">Wind speed: {{ forecast.getWindSpeed }} m/s</span>
                 </div>
                 <div class="weather-icon"><img src="{{"https://openweathermap.org/img/wn/" ~ forecast.getIcon ~ ".png"}}" /></div>
             </div>
