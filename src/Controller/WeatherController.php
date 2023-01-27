@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Weather;
+use App\Helper\ForecastFutureHelper;
 use App\Helper\WeatherNowHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,13 +14,16 @@ class WeatherController extends AbstractController
     #[Route('/weather', name: 'weather')]
     public function index(): Response
     {
-        $forecast = (new WeatherNowHelper())->getWeatherNow('riga');
-
+        $weather = new Weather(
+            (new WeatherNowHelper())->getWeatherNow('riga'),
+            (new ForecastFutureHelper())->getForecastFuture('riga')
+        );
         //echo "<pre>";
-        //var_dump($forecast->getIcon());die;
+        //var_dump($weather->getWeatherNow());die;
 
         return $this->render('index.html.twig', [
-            'forecast' => $forecast,
+            'weatherNow' => $weather->getWeatherNow(),
+            'weatherFuture' => $weather->getForecastFuture()
         ]);
     }
 }

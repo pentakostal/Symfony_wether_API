@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-class WetherNow
+class WetherNow extends \App\Helper\WeatherNowHelper
 {
     private string $city;
     private string $country;
