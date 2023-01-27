@@ -7,6 +7,7 @@ use App\Service\WeatherFutureCollectionService;
 
 class ForecastFutureHelper
 {
+
     //Getting forecast for future 5 days
     public function getForecastFuture(string $cityName):array
     {
@@ -55,4 +56,5 @@ class ForecastFutureHelper
 
         return $collection->getWeatherFuture();
     }
+
 }
