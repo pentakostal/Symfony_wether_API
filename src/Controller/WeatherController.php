@@ -19,7 +19,7 @@ class WeatherController extends AbstractController
             (new ForecastFutureHelper())->getForecastFuture('riga')
         );
         //echo "<pre>";
-        //var_dump($weather->getWeatherNow());die;
+        //var_dump($weather->getForecastFuture());die;
 
         return $this->render('index.html.twig', [
             'weatherNow' => $weather->getWeatherNow(),

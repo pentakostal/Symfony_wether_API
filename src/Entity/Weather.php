@@ -8,23 +8,23 @@ use App\Helper\WeatherNowHelper;
 class Weather
 {
     private WeatherNowHelper $weatherNow;
-    private ForecastFutureHelper $forecastFuture;
+    private array $forecastFuture;
 
     public function __construct(
         WeatherNowHelper $weatherNow,
-        ForecastFutureHelper $forecastFuture,
+        array $forecastFuture,
     )
     {
         $this->weatherNow = $weatherNow;
         $this->forecastFuture = $forecastFuture;
     }
 
-    public function getWeatherNow(): WeatherNowHelper
+    public function getWeatherNow():WeatherNowHelper
     {
         return $this->weatherNow;
     }
 
-    public function getForecastFuture(): ForecastFutureHelper
+    public function getForecastFuture():array
     {
         return $this->forecastFuture;
     }

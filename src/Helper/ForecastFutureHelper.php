@@ -8,7 +8,7 @@ use App\Service\WeatherFutureCollectionService;
 class ForecastFutureHelper
 {
     //Getting forecast for future 5 days
-    public function getForecastFuture(string $cityName):WeatherFutureCollectionService
+    public function getForecastFuture(string $cityName):array
     {
         $apiKey = $_ENV['API_KEY'];
         $apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' . $cityName . '&appid=' . $apiKey . '&units=metric';
@@ -53,6 +53,6 @@ class ForecastFutureHelper
             ));
         }
 
-        return $collection;
+        return $collection->getWeatherFuture();
     }
 }
