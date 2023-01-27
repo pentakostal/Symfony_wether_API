@@ -2,25 +2,36 @@
 
 namespace App\Controller;
 
-use App\Entity\Weather;
-use App\Helper\ForecastFutureHelper;
-use App\Helper\WeatherNowHelper;
 use App\Service\LocationCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class WeatherController extends AbstractController
 {
-    #[Route('/weather', name: 'weather')]
+    private $weatherCollection;
+
+    public function __construct()
+    {
+        $this->weatherCollection = new LocationCollection();
+    }
+
+    #[Route('/weather', name: 'weather', methods: "GET")]
     public function index(): Response
     {
-        $weatherCollection = (new LocationCollection())->getLocations();
-        //echo "<pre>";
-        //var_dump($weatherCollection[0]->getForecastFuture());die;
-
         return $this->render('index.html.twig', [
-            'locations' => $weatherCollection
+            'locations' => $this->weatherCollection->getLocations()
         ]);
+    }
+
+    #[Route('/weather', methods: "POST")]
+    public function addLocation(Request $request): Response
+    {
+        $formData = $request->request->get('cityName');
+
+        $this->weatherCollection->add($formData);
+
+        return $this->index();
     }
 }

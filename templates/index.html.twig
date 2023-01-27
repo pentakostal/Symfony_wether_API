@@ -7,6 +7,13 @@
 {% block body %}
 
     <div class="flex flex-col items-center justify-center w-screen min-h-screen text-gray-700 p-10 bg-gradient-to-br from-pink-200 via-purple-200 to-indigo-200 ">
+        <div class="w-full max-w-screen-sm bg-white p-10 mt-10 my-10 rounded-xl ring-8 ring-white ring-opacity-40">
+            <form method="POST">
+                <label for="cityName">Input:</label>
+                <input type="text" id="cityName" name="cityName">
+                <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-full" type="submit">Submit</button>
+            </form>
+        </div>
         {% for location in locations %}
             <div class="w-full max-w-screen-sm bg-white p-10 mt-10 my-10 rounded-xl ring-8 ring-white ring-opacity-40">
                 <div class="flex justify-between">

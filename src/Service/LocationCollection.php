@@ -26,8 +26,8 @@ class LocationCollection
     public function add(string $city):void
     {
         $this->locations[] = new Weather(
-            (new WeatherNowHelper())->getWeatherNow('miami'),
-            (new ForecastFutureHelper())->getForecastFuture('miami')
+            (new WeatherNowHelper())->getWeatherNow('$city'),
+            (new ForecastFutureHelper())->getForecastFuture('$city')
         );
     }
     public function getLocations(): array
