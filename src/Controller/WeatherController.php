@@ -2,36 +2,47 @@
 
 namespace App\Controller;
 
-use App\Service\LocationCollection;
+use App\Service\SingletonController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class WeatherController extends AbstractController
 {
-    private $weatherCollection;
+
+
+    private ?SingletonController $collection;
 
     public function __construct()
     {
-        $this->weatherCollection = new LocationCollection();
+        $this->collection = SingletonController::getInstance();
     }
-
     #[Route('/weather', name: 'weather', methods: "GET")]
     public function index(): Response
     {
+        //echo"<pre>";
+        //var_dump($this->myService);die;
         return $this->render('index.html.twig', [
-            'locations' => $this->weatherCollection->getLocations()
+            'locations' => $this->collection->getLocations()
         ]);
     }
 
-    #[Route('/weather', methods: "POST")]
+    #[Route('/weather', name: 'addLocation', methods: "POST")]
     public function addLocation(Request $request): Response
     {
-        $formData = $request->request->get('cityName');
+        //var_dump(SingletonController::getInstance());
+        $city = $request->get('cityName');
+        //echo"<pre>";
+        //var_dump($this->singletonService->getLocations());die;
+        $this->collection->add($city);
+        //$this->singletonService->getLocations();
+        //echo"<pre>";
+        //var_dump($this->singletonService);die;
 
-        $this->weatherCollection->add($formData);
-
+        //return $this->index();
+        //return $this->redirectToRoute('weather');
         return $this->index();
     }
 }

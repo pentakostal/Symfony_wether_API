@@ -8,7 +8,7 @@ use App\Helper\WeatherNowHelper;
 
 class LocationCollection
 {
-    private array $locations;
+    private array $locations = [];
 
     public function __construct()
     {
@@ -23,11 +23,12 @@ class LocationCollection
         );
     }
 
-    public function add(string $city):void
+    public function addLocation(string $city): void
     {
+        //var_dump('ok');die;
         $this->locations[] = new Weather(
-            (new WeatherNowHelper())->getWeatherNow('$city'),
-            (new ForecastFutureHelper())->getForecastFuture('$city')
+            (new WeatherNowHelper())->getWeatherNow($city),
+            (new ForecastFutureHelper())->getForecastFuture($city)
         );
     }
     public function getLocations(): array
